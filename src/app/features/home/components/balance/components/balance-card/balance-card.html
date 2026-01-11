@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-subtitle>
+                {{ label() }}
+        </mat-card-subtitle>
+    </mat-card-header>
+
+
+    <mat-card-content [class]="cssClass()">
+        Total: {{ value() }}
+    </mat-card-content>
+</mat-card>
