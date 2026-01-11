@@ -1,0 +1,16 @@
+<mat-card class="card">
+    <mat-card-content class="content">
+        <div class="card-title">
+            {{transaction().title}}
+        </div>
+        
+        <div class="card-value">
+            <app-transaction-value [transaction]="transaction()"></app-transaction-value>    
+        </div>
+    </mat-card-content>
+
+    <mat-card-actions class="button">
+        <button mat-button>Editar</button>
+        <button mat-button>Excluir</button>
+    </mat-card-actions>
+</mat-card>
