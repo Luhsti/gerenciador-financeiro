@@ -1,9 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Balance } from './components/balance/balance';
 import { TransactionItem } from './components/transaction-item/transaction-item';
 import { Transaction } from '../../shared/transaction/interfaces/transaction';
-import { TransactionType } from '../../shared/transaction/enums/transaction-type';
 import { NoTransactions } from './components/no-transactions/no-transactions';
+import { TransactionService } from '../../shared/transaction/services/transaction';
 
 @Component({
   selector: 'app-home',
@@ -11,8 +11,18 @@ import { NoTransactions } from './components/no-transactions/no-transactions';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
-  transactions = signal<Transaction[]>([
-  ]);
+export class Home implements OnInit {
+
+  constructor(
+    private transactionService: TransactionService
+  ){}
+
+  transactions = signal<Transaction[]>([]);
+  ngOnInit(){
+    this.transactionService.getAllTransactions().subscribe((data) => {
+      this.transactions.set(data);
+    });
+  }
+
 
 }
