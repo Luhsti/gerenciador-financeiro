@@ -1,0 +1,31 @@
+<div [formGroup]="cadastro">
+  <mat-form-field>
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id" />
+  </mat-form-field>
+
+  <mat-form-field hideRequiredMarker="true" floatLabel="always">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title" />
+    @if (cadastro.controls['title'].hasError('required')) {
+      <mat-error>ID é obrigatório</mat-error>   
+    }
+  </mat-form-field>
+
+  <mat-form-field hideRequiredMarker="true" floatLabel="always">
+    <mat-label>Value</mat-label>
+    <span matTextPrefix>R$&nbsp;</span>
+    <input type="number" matInput formControlName="value" />
+    @if (cadastro.get('value')?.hasError('required')) {
+      <mat-error>Digite um valor</mat-error>   
+    }
+  </mat-form-field>
+
+  <mat-form-field hideRequiredMarker="true" floatLabel="always">
+    <mat-label>Type</mat-label>
+    <input matInput formControlName="type" />
+    @if (cadastro.get('type')?.hasError('required')) {
+      <mat-error>Escolha o tipo</mat-error>   
+    }
+  </mat-form-field>
+</div>
